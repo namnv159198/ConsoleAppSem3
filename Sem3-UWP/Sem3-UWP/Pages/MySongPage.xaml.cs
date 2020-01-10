@@ -22,25 +22,26 @@ namespace Sem3_UWP.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Register : Page
+    public sealed partial class MySongPage : Page
     {
-        private SQLiteMemberService _service;
-        public Register()
+        //private Song currentSong;
+        private GetMySongService _getMySongService = new GetMySongService();
+        //private TokenSaveFileService _tokenSaveFileService = new TokenSaveFileService();
+        private Song currentSong;
+        private TokenSaveFileService _tokenSaveFileService = new TokenSaveFileService();
+        private bool _isPlaying = false;
+        private bool _SongNext = true;
+        private bool _SongPrevious = false;
+        public MySongPage()
         {
             this.InitializeComponent();
-            this._service = new SQLiteMemberService();
-
         }
+        private async void FrameworkElement_OnLoaded(object sender, RoutedEventArgs e)
 
-        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Member2 member2 = new Member2()
-            {
-                Name = TxtFirstName.Text,
-                Username = TxtLastName.Text,
-                Password = "123"
-            };
-            this._service.Create(member2);
+            //var checkToken = await this._tokenSaveFileService.GetToken();
+
+            Songs.ItemsSource = await this._getMySongService.LoadMySong();
 
         }
     }

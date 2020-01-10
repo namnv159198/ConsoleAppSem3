@@ -30,11 +30,11 @@
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Left" FontSize="20"   >First Name</TextBlock>
-            <TextBox  Grid.Row="0" Grid.Column="1" TextAlignment="Center" ></TextBox>
+            <TextBox  Grid.Row="0" Grid.Column="1" TextAlignment="Center" x:Name="TxtFirstName" ></TextBox>
             <TextBlock Grid.Row="0" Grid.Column="2" TextAlignment="Center" x:Name="notifyTextFirstName"></TextBlock>
 
             <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Left" FontSize="20"  >Last Name</TextBlock>
-            <TextBox  Grid.Row="1" Grid.Column="1" TextAlignment="Center" ></TextBox>
+            <TextBox  Grid.Row="1" Grid.Column="1" TextAlignment="Center" x:Name="TxtLastName"></TextBox>
             <TextBlock Grid.Row="1" Grid.Column="2" TextAlignment="Center" x:Name="notifyTextLastName"></TextBlock>
 
             <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Left" FontSize="20" >Email</TextBlock>
@@ -42,7 +42,7 @@
             <TextBlock Grid.Row="2" Grid.Column="2" TextAlignment="Center" x:Name="notifyTextEmail"></TextBlock>
 
             <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Left" FontSize="20" >Password</TextBlock>
-            <PasswordBox Grid.Row="3" Grid.Column="1"  ></PasswordBox>
+            <PasswordBox Grid.Row="3" Grid.Column="1" x:Name="PasswordBox" ></PasswordBox>
             <TextBlock Grid.Row="3" Grid.Column="2" TextAlignment="Center" x:Name="notifyTextPassword1"></TextBlock>
 
             <TextBlock Grid.Row="4" Grid.Column="0" TextAlignment="Left" FontSize="20" >Confirm Password  </TextBlock>
@@ -75,7 +75,7 @@
 
         </Grid>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
-            <Button Margin="10"  Height="50" FontSize="20">Submit</Button>
+            <Button Margin="10"  Height="50" FontSize="20" Click="Button_Click">Submit</Button>
             <Button Margin="10"  Height="50" FontSize="20">Reset</Button>
         </StackPanel>
     </StackPanel>

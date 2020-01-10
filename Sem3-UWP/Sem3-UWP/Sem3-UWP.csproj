@@ -122,8 +122,18 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\Member2.cs" />
+    <Compile Include="Models\MemberAccounts.cs" />
+    <Compile Include="Models\MemberInformation.cs" />
+    <Compile Include="Models\MemberModel.cs" />
+    <Compile Include="Models\Song.cs" />
+    <Compile Include="Models\SQLiteHelper.cs" />
     <Compile Include="Pages\CreateSong.xaml.cs">
       <DependentUpon>CreateSong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Information.xaml.cs">
+      <DependentUpon>Information.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ListSong.xaml.cs">
       <DependentUpon>ListSong.xaml</DependentUpon>
@@ -131,13 +141,36 @@
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\LoginSuccesPage.xaml.cs">
+      <DependentUpon>LoginSuccesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MySongPage.xaml.cs">
+      <DependentUpon>MySongPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RegisterPages.xaml.cs">
+      <DependentUpon>RegisterPages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SongSerivecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CreatSongService.cs" />
+    <Compile Include="Services\GetListSongService.cs" />
+    <Compile Include="Services\GetMySongService.cs" />
+    <Compile Include="Services\IMemberService.cs" />
+    <Compile Include="Services\LoginService.cs" />
+    <Compile Include="Services\MemberInformationService.cs" />
+    <Compile Include="Services\MemberService.cs" />
+    <Compile Include="Services\SongService.cs" />
+    <Compile Include="Services\SQLiteMemberService.cs" />
+    <Compile Include="Services\TokenSaveFileService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -167,6 +200,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Information.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ListSong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,11 +212,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\LoginSuccesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MySongPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RegisterPages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -188,9 +241,17 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCL">
+      <Version>3.8.7.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
+    <SDKReference Include="SQLite.UWP.2015, Version=3.30.1">
+      <Name>SQLite for Universal Windows Platform</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

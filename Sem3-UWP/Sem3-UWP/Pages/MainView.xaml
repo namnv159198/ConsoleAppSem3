@@ -7,44 +7,73 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <NavigationView x:Name="NavView"
+                         Loaded="NavView_Loaded"
+                         ItemInvoked="NavView_ItemInvoked"
+                         BackRequested="NavView_BackRequested">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Home" Content="Home" Tag="home" />
+                <NavigationViewItem Icon="Contact" Content="Register" Tag="register" />
+                <NavigationViewItem Icon="ContactInfo" Content="Information" Tag="information" />
 
-    <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
-               IsPaneOpen="True" OpenPaneLength="256" CompactPaneLength="48" DisplayMode="Inline">
-        <SplitView.Pane>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="PANE CONTENT" x:Name="PaneHeader" Margin="60,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
-                <ListView x:Name="NavLinksList" Margin="0,12,0,0" SelectionMode="None" Grid.Row="1" VerticalAlignment="Stretch"
-                          ItemClick="" IsItemClickEnabled="True"
-                          ItemsSource="{x:Bind }" ItemTemplate="{StaticResource NavLinkItemTemplate}">
-                    <Button  HorizontalAlignment="Right" Margin="0,0,2,0" >Login</Button>
-                    <Button  HorizontalAlignment="Right" Margin="0,0,2,0" >Register</Button>
-                    <Button  HorizontalAlignment="Right" Margin="0,0,2,0" >Create Song</Button>
-                    <Button  HorizontalAlignment="Right" Margin="0,0,2,0" >List Song</Button>
-                </ListView>
-                <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="14,24,0,24" >
-                    
-                    <SymbolIcon Symbol="Setting" />
-                    <TextBlock Text="Settings" Margin="24,0,0,0" VerticalAlignment="Center"/>
-                </StackPanel>
-                
-            </Grid>
-        </SplitView.Pane>
+                <NavigationViewItem  Content="Music" Tag="music" >
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC4F;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <TextBlock Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
-            <TextBlock x:Name="content" Grid.Row="1" Margin="12,12,0,0" Style="{StaticResource BodyTextBlockStyle}" />
-            
-        </Grid>
-    </SplitView>
+                <NavigationViewItem  Content="Post Music" Tag="post_music" >
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE710;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem  Content="List Music" Tag="list_music" >
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE90B;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem  Content="My Music" Tag="my_music" >
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE90B;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+            </NavigationView.MenuItems>
+
+       
+
+            <NavigationView.AutoSuggestBox>
+                <!-- See AutoSuggestBox documentation for
+                 more info about how to implement search. -->
+                <AutoSuggestBox x:Name="NavViewSearchBox" QueryIcon="Find"/>
+            </NavigationView.AutoSuggestBox>
+
+            <ScrollViewer>
+                <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
+                   />
+            </ScrollViewer>
+        </NavigationView>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger
+                        MinWindowWidth="{x:Bind NavView.CompactModeThresholdWidth}"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters >
+                        <!-- Remove the next 3 lines for left-only navigation. -->
+                        <Setter Target="NavView.PaneDisplayMode" Value="Top"/>
+                        <Setter Target="NavViewSearchBox.Width" Value="200"/>
+                        <Setter Target="MainPagesHeader.Visibility" Value="Collapsed"/>
+                        <!-- Leave the next line for left-only navigation. -->
+                        <Setter Target="ContentFrame.Padding" Value="24,0,24,24"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
 </Page>

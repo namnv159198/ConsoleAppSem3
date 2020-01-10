@@ -22,26 +22,25 @@ namespace Sem3_UWP.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Register : Page
+    public sealed partial class LoginSuccesPage : Page
     {
-        private SQLiteMemberService _service;
-        public Register()
+        private  MemberInformationService _memberInformationService = new MemberInformationService();
+        public LoginSuccesPage()
         {
             this.InitializeComponent();
-            this._service = new SQLiteMemberService();
-
+            LoadPages();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void LoadPages()
         {
-            Member2 member2 = new Member2()
+            MemberInformation MemberInfor = await this._memberInformationService.GetMemberInformation();
+            if (MemberInfor != null)
             {
-                Name = TxtFirstName.Text,
-                Username = TxtLastName.Text,
-                Password = "123"
-            };
-            this._service.Create(member2);
-
+                TxtUserID.Text = MemberInfor.id;
+                TxtcreatedAt.Text = MemberInfor.createdAt;
+                TxtEmail.Text = MemberInfor.email;
+            }
+           
         }
     }
 }
