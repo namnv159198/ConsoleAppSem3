@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -35,7 +36,7 @@ namespace Sem3_UWP.Services
             var stringContent = await reponse.Content.ReadAsStringAsync();
 
             var accountContent = JsonConvert.DeserializeObject<MemberAccounts>(stringContent);
-
+      
             return accountContent;
         }
 

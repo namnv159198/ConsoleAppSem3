@@ -25,6 +25,7 @@ namespace Sem3_UWP.Pages
     public sealed partial class LoginSuccesPage : Page
     {
         private  MemberInformationService _memberInformationService = new MemberInformationService();
+        private  TokenSaveFileService _tokenSaveFileService = new TokenSaveFileService();
         public LoginSuccesPage()
         {
             this.InitializeComponent();
@@ -42,5 +43,11 @@ namespace Sem3_UWP.Pages
             }
            
         }
+
+//        private  void Button_Click(object sender, RoutedEventArgs e)
+//        {
+//            this.Frame.Navigate(typeof(Pages.Login));
+//            this._tokenSaveFileService.SaveTokenToFile(Login.TokenFile," ");
+//        }
     }
 }

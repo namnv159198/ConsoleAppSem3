@@ -42,15 +42,14 @@ namespace Sem3_UWP.Pages
         private async void FrameworkElement_OnLoaded(object sender, RoutedEventArgs e)
 
         {
-
             Songs.ItemsSource = await _getListSongService.LoadSong();
-
         }
 
         private void Songs_OnItemClick(object sender, ItemClickEventArgs e)
         {
             PlaySong(e.ClickedItem as Song);
         }
+
         private void Next_OnClick(object sender, RoutedEventArgs e)
         {
             SongToward(_SongNext);
@@ -63,6 +62,10 @@ namespace Sem3_UWP.Pages
         private void PlayButton_Clicked(object sender, RoutedEventArgs e)
         {
             playButton();
+        }
+        private void Shuffle_OnClick(object sender, RoutedEventArgs e)
+        {
+            
         }
 
 
@@ -77,6 +80,7 @@ namespace Sem3_UWP.Pages
             StatusText.Text = "Now Playing: " + s.name;
         }
 
+      
         public  void SongToward(Boolean check)
         {
             var currentIndex = Songs.SelectedIndex;
@@ -114,6 +118,7 @@ namespace Sem3_UWP.Pages
                 PlaySong(currentSong);
                 Songs.SelectedIndex = 0;
             }
+
             if (_isPlaying)
             {
                 MyPlayer.MediaPlayer.Pause();

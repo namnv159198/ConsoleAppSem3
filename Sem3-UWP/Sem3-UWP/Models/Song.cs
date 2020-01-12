@@ -15,6 +15,8 @@ namespace Sem3_UWP.Models
         public string link { get; set; }
         public long id { get; set; }
         public int status { get; set; }
+
+      
        // public String description { get; set; }
        public List<Song> listSong{ get; set; }
     }

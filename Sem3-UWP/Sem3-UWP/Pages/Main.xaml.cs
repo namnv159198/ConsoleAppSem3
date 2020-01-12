@@ -39,14 +39,22 @@ namespace Sem3_UWP.Pages
             {
                 splitView.IsPaneOpen = false;
             }
+
+        }
+        private void Button_Menu(object sender, RoutedEventArgs e)
+        {
+
+            if (splitView.IsPaneOpen)
+            {
+                splitView.IsPaneOpen = false;
+            }
             else
             {
                 splitView.IsPaneOpen = true;
-
             }
 
         }
-       
+
 
         private void Button_Home(object sender, RoutedEventArgs e)
         {

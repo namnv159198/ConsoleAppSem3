@@ -23,5 +23,21 @@ namespace Sem3_UWP.Models
         public string createdAt { get; set; }
         public string updatedAt { get; set; }
         public string salt { get; set; }
+
+        public string returnGender(int gender)
+        {
+            string genderText = "";
+            if (gender == 1)
+            {
+                genderText = "Male";
+            }
+
+            if (gender == 0)
+            {
+                genderText = "Female";
+            }
+
+            return genderText;
+        }
     }
 }

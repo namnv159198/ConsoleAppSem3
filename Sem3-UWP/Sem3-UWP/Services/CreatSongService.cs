@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -23,13 +24,18 @@ namespace Sem3_UWP.Services
             HttpContent songContent = new StringContent(songJson,Encoding.UTF8,CONTENT_TYPE);
 
             HttpClient httpClient = new HttpClient();
-            var token = await this._tokenSaveFileService.ReadTokenFormFile("TokenFile.txt");
+            string token = await _tokenSaveFileService.ReadTokenFormFile();
             httpClient.DefaultRequestHeaders.Add("Authorization", "Basic " + token);
             var reponse = await httpClient.PostAsync(CREAT_SONG_URL_API, songContent);
 
             var songContentReturn = await  reponse.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<Song>(songContentReturn);
+            
+             var responContent =    JsonConvert.DeserializeObject<Song>(songContentReturn);
+
+             Debug.WriteLine(responContent.name);
+
+            return responContent;
         }
     }
 }

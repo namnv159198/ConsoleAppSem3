@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -26,6 +27,7 @@ namespace Sem3_UWP.Services
             Task<ObservableCollection<Song>> list = Task.Run(async () => await LoadSong());
             return list.Result;
         }
+       
 
         public async Task<ObservableCollection<Song>> LoadSong()
         {
@@ -47,5 +49,8 @@ namespace Sem3_UWP.Services
 
             return data;
         }
+
+
+        
     }
 }

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Sem3_UWP.Models;
 using Sem3_UWP.Services;
@@ -38,15 +39,14 @@ namespace Sem3_UWP.Pages
 
         private async void LoadMemberInformation()
         {
-          
             
              MemberInformation MemberInfor = await this._service.GetMemberInformation();
              
                 TxtFirstName.Text = MemberInfor.firstName;
                 TxtLastName.Text = MemberInfor.lastName;
                 TxtAddress.Text = MemberInfor.address;
-                TxtGender.Text = " " + MemberInfor.gender;
-                TxtAvatar.Text = MemberInfor.avatar;
+                TxtGender.Text = " " +MemberInfor.returnGender(MemberInfor.gender) ;
+                ImageControl.Source = new BitmapImage(new Uri(MemberInfor.avatar, UriKind.Absolute));
                 TxtEmail.Text = MemberInfor.email;
                 TxtUserID.Text = MemberInfor.id;
                 TxtPhone.Text = MemberInfor.phone;

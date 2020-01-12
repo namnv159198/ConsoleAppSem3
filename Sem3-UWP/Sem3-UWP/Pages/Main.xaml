@@ -29,6 +29,9 @@
                                     </StackPanel>
                                 </Button.Content>
                            </Button>
+                        <Button Margin="0,20,0,0"  Width="auto"   VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" Click="Button_Menu">
+                           
+                        </Button>
 
                         <Button Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"  Click="Button_Home" Margin="0,40,0,0">
                             <Button.Content>

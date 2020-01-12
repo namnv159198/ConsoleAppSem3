@@ -12,7 +12,8 @@ namespace Sem3_UWP.Services
    public class TokenSaveFileService
    {
        public string result = "";
-       public  async void SaveTokenToFile(string nameFile, string token)
+       private string FileImageUrl = "ImageFile.txt";
+        public  async void SaveTokenToFile(string nameFile, string token)
         {
             var storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
             var TokenFile = await storageFolder.CreateFileAsync(nameFile,
@@ -55,6 +56,20 @@ namespace Sem3_UWP.Services
                 return null;
             }
             return result;
+        }
+        public async void SaveCameraFileToFile(string token)
+        {
+            var storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            var TokenFile = await storageFolder.CreateFileAsync(FileImageUrl,
+                Windows.Storage.CreationCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(TokenFile, token);
+        }
+        public async Task<String> ReadCameraFileFormFile()
+        {
+            var storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            var TokenSaveAsync =
+                await storageFolder.CreateFileAsync(FileImageUrl, Windows.Storage.CreationCollisionOption.OpenIfExists);
+            return await FileIO.ReadTextAsync(TokenSaveAsync);
         }
 
 

@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Sem3_UWP.Models;
 using Sem3_UWP.Services;
+using Contact = Windows.ApplicationModel.Contacts.Contact;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,26 +23,23 @@ namespace Sem3_UWP.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Register : Page
+    public sealed partial class AddContactPage : Page
     {
         private SQLiteMemberService _service;
-        public Register()
+        public AddContactPage()
         {
             this.InitializeComponent();
             this._service = new SQLiteMemberService();
-
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Add_Contact_Click(object sender, RoutedEventArgs e)
         {
-            Member2 member2 = new Member2()
+            Contact2 contact = new Contact2()
             {
-                Name = TxtFirstName.Text,
-                Username = TxtLastName.Text,
-                Password = "123"
+                Name = TxtName.Text,
+                Phone = TxtPhone.Text,
             };
-            this._service.Create(member2);
-
+            this._service.Create2(contact);
+            StatusAdd.Text = "Add Success";
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Sem3_UWP.Models
         public SQLiteHelper()
         {
             SQLiteConnection = new SQLiteConnection(DatabaseName);
-            CreateTables();
+            CreateContactTable();
         }
 
         private void CreateTables()
@@ -37,6 +37,14 @@ namespace Sem3_UWP.Models
         private void CreateMemberTable()
         {
             var sql = @"Create table if not exists Members (Id integer primary key AUTOINCREMENT, Name varchar(200), Username varchar(50), Password varchar(200))";
+            using (var statement = SQLiteConnection.Prepare(sql))
+            {
+                statement.Step();
+            }
+        }
+        private void CreateContactTable()
+        {
+            var sql = @"Create table if not exists Contacts (Id integer primary key AUTOINCREMENT, Name varchar(200), Username varchar(50))";
             using (var statement = SQLiteConnection.Prepare(sql))
             {
                 statement.Step();

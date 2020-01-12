@@ -38,9 +38,6 @@ namespace Sem3_UWP.Services
             JArray o = JArray.Parse(stringContent);
             Debug.WriteLine(o);
             ObservableCollection<Song> data = o.ToObject<ObservableCollection<Song>>();
-            Debug.WriteLine(data[0].author);
-            Debug.WriteLine(data[1].author);
-            Debug.WriteLine(data[2].author);
 
             return data;
         }

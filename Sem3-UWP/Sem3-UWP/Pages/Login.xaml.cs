@@ -33,7 +33,7 @@ namespace Sem3_UWP.Pages
        public Login()
         {
             this.InitializeComponent();
-            LoadFrame();
+          
         }
 
         private async void Login_Click(object sender, RoutedEventArgs e)
@@ -41,16 +41,23 @@ namespace Sem3_UWP.Pages
             var email = TxtEmail.Text;
             var password = PasswordBox.Password;
             var checkPages = await this._serviceSaveFileService.ReadTokenFormFile();
+            if (email == null)
+            {
+                notifyTextEmail.Text = "Email is Required !";
+            }
             MemberAccounts login = await this._serviceLogin.LoginAccounts(email, password);
             if ( login.status == 1)
             {
                 _serviceSaveFileService.SaveTokenToFile(Login.TokenFile, login.token);
                 this.Frame.Navigate(typeof(Pages.Main));
             }
-            if (login.status == 400)
+            else
             {
-                   StatusLoginFalies.Text = "Invalid Information";
-               }
+                TxtEmail.Text = "";
+                PasswordBox.Password = "";
+                StatusLoginFalies.Text = "Invalid Information";
+            }
+           
            
         }
 
@@ -68,8 +75,13 @@ namespace Sem3_UWP.Pages
             {
                 this.Frame.Navigate(typeof(Pages.Main));
             }
+            else
+            {
+                this.Frame.Navigate(typeof(Pages.Login));
+            }
         }
 
+      
         private void Sigin_In_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Pages.RegisterPages));

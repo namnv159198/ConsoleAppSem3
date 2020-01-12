@@ -68,10 +68,7 @@ namespace Sem3_UWP.Pages
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-          resetValue();
-        }
+        
 
         private void resetValue()
         {
@@ -80,6 +77,11 @@ namespace Sem3_UWP.Pages
             this.TxtSongSinger.Text = "";
             this.TxtSongLink.Text = "";
             this.TxtSongThumbnail.Text = "";
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            resetValue();
         }
     }
 }

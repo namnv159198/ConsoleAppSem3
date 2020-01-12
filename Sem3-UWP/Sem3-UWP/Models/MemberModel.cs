@@ -22,6 +22,18 @@ namespace Sem3_UWP.Models
                 return result == SQLiteResult.OK;
             }
         }
+        public bool Save2(Contact2 contacts)
+        {
+            var sqlConnection = SQLiteHelper.CreateInstance().SQLiteConnection;
+            var sqlCommandString = "insert into Contacts (Name, Username) values (?,?)";
+            using (var stt = sqlConnection.Prepare(sqlCommandString))
+            {
+                stt.Bind(1, contacts.Name);
+                stt.Bind(2, contacts.Phone);
+                var result = stt.Step();
+                return result == SQLiteResult.OK;
+            }
+        }
 
         public List<Member> GetList()
         {
